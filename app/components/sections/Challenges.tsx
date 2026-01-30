@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { AlertCircle, CheckCircle } from "lucide-react";
 
 interface ChallengesProps {
@@ -12,6 +15,33 @@ interface ChallengesProps {
 }
 
 const Challenges = ({ challenges }: ChallengesProps) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <section id="challenges" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">{challenges.title}</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">{challenges.desc}</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {challenges.items.map((_, idx) => (
+              <div
+                key={idx}
+                className="bg-slate-50 rounded-xl p-6 border border-slate-100 min-h-[200px] animate-pulse"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="challenges" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">

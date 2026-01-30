@@ -4,7 +4,14 @@ interface TechProps {
   tech: {
     title: string;
     certsTitle: string;
-    certs: readonly string[];
+    certs: readonly (
+      | string
+      | {
+          text: string;
+          link?: string;
+          icon?: string;
+        }
+    )[];
     stack: readonly {
       category: string;
       items: string;
@@ -23,12 +30,45 @@ const Tech = ({ tech }: TechProps) => {
               <ShieldCheck className="text-blue-400" aria-hidden="true" /> {tech.certsTitle}
             </h3>
             <div className="grid gap-3">
-              {tech.certs.map((cert, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 bg-slate-700/50 rounded-lg">
-                  <div className="w-2 h-2 rounded-full bg-green-400 shrink-0" />
-                  <span className="font-medium text-slate-200 text-sm">{cert}</span>
-                </div>
-              ))}
+              {tech.certs.map((cert, i) => {
+                const isObject = typeof cert === "object";
+                const text = isObject ? cert.text : cert;
+                const link = isObject ? cert.link : undefined;
+                const icon = isObject ? cert.icon : undefined;
+
+                const content = (
+                  <div className="flex items-center gap-3 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors group">
+                    {icon ? (
+                      <img
+                        src={icon}
+                        alt=""
+                        className="w-7 h-7 object-contain shrink-0 bg-white p-0.5 rounded-full border border-white/20 group-hover:scale-110 transition-transform"
+                      />
+                    ) : (
+                      <div className="w-2 h-2 rounded-full bg-green-400 shrink-0" />
+                    )}
+                    <span className="font-medium text-slate-200 text-sm group-hover:text-blue-400 transition-colors">
+                      {text}
+                    </span>
+                  </div>
+                );
+
+                if (link) {
+                  return (
+                    <a
+                      key={i}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block focus:outline-none"
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+
+                return <div key={i}>{content}</div>;
+              })}
             </div>
           </div>
 

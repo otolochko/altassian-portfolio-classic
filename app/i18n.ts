@@ -33,10 +33,26 @@ export const TRANSLATIONS = {
       title: "Tech Stack & Certifications",
       certsTitle: "Atlassian Certifications",
       certs: [
-        "ACP-OA Atlassian Cloud Organization Admin (ACP-520)",
-        "ACP-JCA Jira Administrator for Cloud (ACP-120)",
-        "ACP-MJCP Managing Jira Projects Cloud (ACP-620)",
-        "Issue Security in Jira (ASB-152)",
+        {
+          text: "ACP-OA Atlassian Cloud Organization Admin (ACP-520)",
+          link: "https://cp.certmetrics.com/atlassian/en/public/badge/c?id=5b693d520b3f583d9e7087ae&ccat=52&date=2023-8-25",
+          icon: "https://api.certmetrics.com/atlassian/badges/2/52.png",
+        },
+        {
+          text: "ACP-JCA Jira Administrator for Cloud (ACP-120)",
+          link: "https://cp.certmetrics.com/atlassian/en/public/badge/c?id=5b693d520b3f583d9e7087ae&ccat=26&date=2021-12-23",
+          icon: "https://api.certmetrics.com/atlassian/badges/2/26.png",
+        },
+        {
+          text: "ACP-MJCP Managing Jira Projects Cloud (ACP-620)",
+          link: "https://cp.certmetrics.com/atlassian/en/public/badge/c?id=5b693d520b3f583d9e7087ae&ccat=30&date=2021-9-13",
+          icon: "https://api.certmetrics.com/atlassian/badges/2/30.png",
+        },
+        {
+          text: "Issue Security in Jira (ASB-152)",
+          link: "https://cp.certmetrics.com/atlassian/en/public/transcript/HNCM16CKKMV41MSG",
+          icon: "https://api.certmetrics.com/atlassian/badges/2/22.png",
+        },
         "Agile in Jira",
         "ITSM with Jira Service Management Foundations",
       ],
@@ -232,10 +248,26 @@ export const TRANSLATIONS = {
       title: "Технології та Сертифікації",
       certsTitle: "Сертифікати Atlassian",
       certs: [
-        "ACP-OA Atlassian Cloud Organization Admin",
-        "ACP-JCA Jira Administrator for Cloud",
-        "ACP-MJCP Managing Jira Projects Cloud",
-        "ASB-152 Issue Security in Jira",
+        {
+          text: "ACP-OA Atlassian Cloud Organization Admin",
+          link: "https://cp.certmetrics.com/atlassian/en/public/badge/c?id=5b693d520b3f583d9e7087ae&ccat=52&date=2023-8-25",
+          icon: "https://api.certmetrics.com/atlassian/badges/2/52.png",
+        },
+        {
+          text: "ACP-JCA Jira Administrator for Cloud",
+          link: "https://cp.certmetrics.com/atlassian/en/public/badge/c?id=5b693d520b3f583d9e7087ae&ccat=26&date=2021-12-23",
+          icon: "https://api.certmetrics.com/atlassian/badges/2/26.png",
+        },
+        {
+          text: "ACP-MJCP Managing Jira Projects Cloud",
+          link: "https://cp.certmetrics.com/atlassian/en/public/badge/c?id=5b693d520b3f583d9e7087ae&ccat=30&date=2021-9-13",
+          icon: "https://api.certmetrics.com/atlassian/badges/2/30.png",
+        },
+        {
+          text: "ASB-152 Issue Security in Jira",
+          link: "https://cp.certmetrics.com/atlassian/en/public/transcript/HNCM16CKKMV41MSG",
+          icon: "https://api.certmetrics.com/atlassian/badges/2/22.png",
+        },
         "Agile in Jira",
         "ITSM with Jira Service Management Foundations",
       ],

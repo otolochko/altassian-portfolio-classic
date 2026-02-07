@@ -75,16 +75,16 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-6" noValidate>
+    <form onSubmit={onSubmit} className="space-y-6 reveal" noValidate>
       {status === "success" && (
-        <div className="flex items-start gap-3 rounded-lg border border-green-200 bg-green-50 p-4 text-green-800">
+        <div className="flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-800">
           <CheckCircle2 className="mt-0.5 h-5 w-5" aria-hidden="true" />
           <div className="text-sm">{labels.success}</div>
         </div>
       )}
 
       {status === "error" && (
-        <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">
+        <div className="flex items-start gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-rose-800">
           <AlertCircle className="mt-0.5 h-5 w-5" aria-hidden="true" />
           <div className="text-sm">{labels.error}</div>
         </div>
@@ -104,7 +104,7 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
       </div>
 
       <div>
-        <label htmlFor={nameId} className="block text-sm font-bold text-slate-700 mb-2">
+        <label htmlFor={nameId} className="block text-sm font-semibold text-ink-700 mb-2">
           {labels.name}
         </label>
         <input
@@ -112,7 +112,8 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
           name="name"
           type="text"
           autoComplete="name"
-          className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-blue-500 outline-none"
+          className="w-full px-4 py-3 rounded-xl bg-white border border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition"
+          style={{ color: "#18181b" }}
           value={form.name}
           onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))}
           required
@@ -120,7 +121,7 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
       </div>
 
       <div>
-        <label htmlFor={emailId} className="block text-sm font-bold text-slate-700 mb-2">
+        <label htmlFor={emailId} className="block text-sm font-semibold text-ink-700 mb-2">
           {labels.email}
         </label>
         <input
@@ -129,33 +130,35 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
           type="email"
           autoComplete="email"
           inputMode="email"
-          className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-blue-500 outline-none"
+          className="w-full px-4 py-3 rounded-xl bg-white border border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition"
+          style={{ color: "#18181b" }}
           value={form.email}
           onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
           required
           aria-invalid={form.email.length > 0 && !emailOk}
         />
         {form.email.length > 0 && !emailOk && (
-          <p className="mt-2 text-xs text-red-600">
+          <p className="mt-2 text-xs text-rose-600">
             {lang === "en" ? "Please enter a valid email." : "Вкажіть коректний email."}
           </p>
         )}
       </div>
 
       <div>
-        <label htmlFor={msgId} className="block text-sm font-bold text-slate-700 mb-2">
+        <label htmlFor={msgId} className="block text-sm font-semibold text-ink-700 mb-2">
           {labels.message}
         </label>
         <textarea
           id={msgId}
           name="message"
           rows={4}
-          className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-blue-500 outline-none resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-white border border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none resize-none transition"
+          style={{ color: "#18181b" }}
           value={form.message}
           onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
           required
         />
-        <p className="mt-2 text-xs text-slate-500">
+        <p className="mt-2 text-xs text-ink-500">
           {lang === "en"
             ? "Tip: include context, target timeline, and whether you use Cloud or Data Center."
             : "Порада: додай контекст, бажані строки та чи це Cloud чи Data Center."}
@@ -165,7 +168,8 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
       <button
         type="submit"
         disabled={!canSubmit}
-        className="w-full bg-slate-900 text-white font-bold py-4 rounded-lg hover:bg-slate-800 transition shadow-lg disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+        className="w-full bg-zinc-900 font-semibold py-4 rounded-xl hover:bg-zinc-800 transition shadow-[0_16px_40px_-30px_rgba(15,23,42,0.6)] disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+        style={{ color: "#ffffff" }}
       >
         {status === "submitting" && <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />}
         {labels.submit}

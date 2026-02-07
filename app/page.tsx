@@ -24,7 +24,7 @@ export default async function Page({
   const nextLang: Lang = lang === "en" ? "uk" : "en";
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
+    <div className="min-h-screen font-sans text-ink-900">
       <Navbar nav={t.nav} lang={lang} nextLang={nextLang} />
       <main>
         <Hero hero={t.hero} />

@@ -8,42 +8,46 @@
 
 :root {
   /* Base */
-  --background: var(--ds-surface, #FFFFFF);
-  --foreground: var(--ds-text, #172B4D);
-  --muted: var(--ds-text-subtle, #44546F);
-  --border: var(--ds-border, #DFE1E6);
+  --background: #ffffff;
+  --foreground: #18181b; /* zinc-900 - always dark */
+  --muted: var(--ds-text-subtle, #44546f);
+  --border: var(--ds-border, #dfe1e6);
 
   /* Surfaces */
-  --surface: var(--ds-surface-raised, #FFFFFF);
-  --surface-sunken: var(--ds-surface-sunken, #F4F5F7);
-  --surface-inverse: var(--ds-surface-inverse, #172B4D);
+  --surface: var(--ds-surface-raised, #ffffff);
+  --surface-sunken: var(--ds-surface-sunken, #f4f5f7);
+  --surface-inverse: var(--ds-surface-inverse, #172b4d);
 
   /* Text (inverse) */
-  --inverse: var(--ds-text-inverse, #FFFFFF);
-  --inverse-muted: var(--ds-text-inverse, #DEEBFF);
+  --inverse: var(--ds-text-inverse, #ffffff);
+  --inverse-muted: var(--ds-text-inverse, #deebff);
 
   /* Brand + link */
-  --link: var(--ds-link, #0052CC);
-  --brand: var(--ds-background-brand-bold, #0052CC);
-  --brand-hover: var(--ds-background-brand-bold-hovered, #0065FF);
+  --link: var(--ds-link, #2563eb);
+  --brand: var(--ds-background-brand-bold, #2563eb);
+  --brand-hover: var(--ds-background-brand-bold-hovered, #1d4ed8);
 
   /* Status/intent */
-  --info: var(--ds-background-information, #DEEBFF);
-  --info-text: var(--ds-text-information, #0052CC);
+  --info: var(--ds-background-information, #deebff);
+  --info-text: var(--ds-text-information, #0052cc);
 
-  --success: var(--ds-background-success, #E3FCEF);
-  --success-text: var(--ds-text-success, #216E4E);
+  --success: var(--ds-background-success, #e3fcef);
+  --success-text: var(--ds-text-success, #216e4e);
 
-  --danger: var(--ds-background-danger, #FFEBE6);
-  --danger-text: var(--ds-text-danger, #AE2E24);
+  --danger: var(--ds-background-danger, #ffebe6);
+  --danger-text: var(--ds-text-danger, #ae2e24);
 }
 
 @theme inline {
+  /* Base colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  
   /* Existing template hooks */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-jetbrains-mono);
 
   /* Custom ADS-mapped colors */
   --color-muted: var(--muted);
@@ -70,38 +74,72 @@
   --color-danger-text: var(--danger-text);
 }
 
-/* Fallback dark mode (if ADS tokens are not present) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--ds-surface, #1D2125);
-    --foreground: var(--ds-text, #DEE4EA);
-    --muted: var(--ds-text-subtle, #9FADBC);
-    --border: var(--ds-border, #3D4751);
+/* Dark mode disabled - site uses light theme with white cards */
 
-    --surface: var(--ds-surface-raised, #22272B);
-    --surface-sunken: var(--ds-surface-sunken, #1D2125);
-    --surface-inverse: var(--ds-surface-inverse, #0B0F14);
+body {
+  background:
+    radial-gradient(1200px circle at 0% -10%, #eff6ff 0%, transparent 55%),
+    radial-gradient(900px circle at 100% 0%, #f4f4f5 0%, transparent 50%),
+    var(--background);
+  color: var(--foreground);
+  font-family:
+    var(--font-manrope),
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Arial,
+    sans-serif;
+}
 
-    --inverse: var(--ds-text-inverse, #FFFFFF);
-    --inverse-muted: var(--ds-text-inverse, #C7D1DB);
+/* Force dark text on form elements */
+input,
+textarea,
+select {
+  color: #18181b !important; /* zinc-900 */
+}
 
-    --link: var(--ds-link, #579DFF);
-    --brand: var(--ds-background-brand-bold, #579DFF);
-    --brand-hover: var(--ds-background-brand-bold-hovered, #85B8FF);
+input::placeholder,
+textarea::placeholder {
+  color: #a1a1aa !important; /* zinc-400 */
+}
 
-    --info: var(--ds-background-information, #09326C);
-    --info-text: var(--ds-text-information, #85B8FF);
+html {
+  scroll-behavior: smooth;
+}
 
-    --success: var(--ds-background-success, #164B35);
-    --success-text: var(--ds-text-success, #7EE2B8);
+section {
+  scroll-margin-top: 88px;
+}
 
-    --danger: var(--ds-background-danger, #5D1F1A);
-    --danger-text: var(--ds-text-danger, #FD9891);
+.reveal,
+.reveal-item {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: reveal 0.8s ease forwards;
+  animation-delay: var(--delay, 0ms);
+  will-change: transform, opacity;
+}
+
+@supports (animation-timeline: view()) {
+  .reveal,
+  .reveal-item {
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-item {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

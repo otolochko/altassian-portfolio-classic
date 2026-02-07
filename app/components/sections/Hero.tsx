@@ -45,11 +45,33 @@ const Hero = ({ hero }: HeroProps) => {
           </div>
         </div>
 
-        <div className="hidden lg:block relative">
-          {/* Decorative background element */}
-          <div className="absolute -top-6 -right-6 w-full h-full bg-brand-500/5 rounded-3xl -z-10" />
-          
-          <div className="rounded-3xl border border-ink-200/70 bg-white/90 backdrop-blur-xl p-8 shadow-[0_30px_80px_-60px_rgba(15,23,42,0.6)] reveal relative overflow-hidden">
+        <div className="hidden lg:block relative group">
+          {/* Confluence-style Mock (Background) */}
+          <div className="absolute -top-12 -left-12 w-full h-full bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden -z-20 transition-all duration-700 group-hover:-translate-x-4 group-hover:-translate-y-4">
+            <div className="bg-zinc-50 dark:bg-zinc-800/50 border-b border-zinc-200 dark:border-zinc-800 px-4 py-2 flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+              <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+              <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+              <div className="ml-4 h-4 w-32 bg-zinc-200 dark:bg-zinc-700 rounded-full" />
+            </div>
+            <div className="flex blur-[1px] opacity-40">
+              <div className="w-1/4 border-r border-zinc-100 dark:border-zinc-800 p-4 space-y-3">
+                <div className="h-2 w-full bg-zinc-200 dark:bg-zinc-800 rounded-full" />
+                <div className="h-2 w-4/5 bg-zinc-100 dark:bg-zinc-800/50 rounded-full" />
+                <div className="h-2 w-full bg-brand-100 dark:bg-brand-900/30 rounded-full" />
+              </div>
+              <div className="flex-1 p-6 space-y-4">
+                <div className="h-2 w-24 bg-zinc-100 dark:bg-zinc-800 rounded-full mb-4" />
+                <div className="h-6 w-48 bg-zinc-200 dark:bg-zinc-700 rounded-lg" />
+                <div className="space-y-2">
+                  <div className="h-2.5 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full" />
+                  <div className="h-2.5 w-11/12 bg-zinc-100 dark:bg-zinc-800 rounded-full" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-ink-200/70 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl p-8 shadow-[0_30px_80px_-60px_rgba(15,23,42,0.6)] reveal relative overflow-hidden z-10">
             {/* Atlassian-style Accent */}
             <div className="absolute top-0 left-0 w-full h-1 bg-brand-600" />
             
@@ -59,64 +81,52 @@ const Hero = ({ hero }: HeroProps) => {
                   <span className="font-bold text-lg">J</span>
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-ink-400 uppercase tracking-widest leading-none mb-1">Jira Service Management</div>
-                  <div className="text-sm font-bold text-ink-900">PROJ-742</div>
+                  <div className="text-[10px] font-bold text-ink-400 dark:text-zinc-500 uppercase tracking-widest leading-none mb-1">Jira Service Management</div>
+                  <div className="text-sm font-bold text-ink-900 dark:text-zinc-100">PROJ-742</div>
                 </div>
               </div>
-              <div className="w-8 h-8 rounded-full bg-ink-100 flex items-center justify-center">
-                <div className="w-1 h-1 rounded-full bg-ink-400 mx-0.5" />
-                <div className="w-1 h-1 rounded-full bg-ink-400 mx-0.5" />
-                <div className="w-1 h-1 rounded-full bg-ink-400 mx-0.5" />
+              <div className="w-8 h-8 rounded-full bg-ink-100 dark:bg-zinc-800 flex items-center justify-center">
+                <div className="w-1 h-1 rounded-full bg-ink-400 dark:bg-zinc-500 mx-0.5" />
+                <div className="w-1 h-1 rounded-full bg-ink-400 dark:bg-zinc-500 mx-0.5" />
+                <div className="w-1 h-1 rounded-full bg-ink-400 dark:bg-zinc-500 mx-0.5" />
               </div>
             </div>
 
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wider border border-blue-200">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider border border-blue-200 dark:border-blue-800">
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                 In Progress
               </div>
               
-              <h3 className="text-2xl font-bold text-ink-900 leading-tight">
-                Automate <span className="text-brand-700">Onboarding</span> <br/>
+              <h3 className="text-2xl font-bold text-ink-900 dark:text-zinc-100 leading-tight">
+                Automate <span className="text-brand-700 dark:text-blue-400">Onboarding</span> <br/>
                 Workflows with Assets
               </h3>
 
-              <div className="p-4 bg-ink-50 rounded-2xl border border-ink-200/50 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-bold text-ink-400 uppercase tracking-wider">
+              <div className="p-4 bg-ink-50 dark:bg-zinc-800/50 rounded-2xl border border-ink-200/50 dark:border-zinc-700 space-y-3">
+                <div className="flex items-center justify-between text-[11px] font-bold text-ink-400 dark:text-zinc-500 uppercase tracking-wider">
                   <span>Progress</span>
-                  <span className="text-brand-700">82%</span>
+                  <span className="text-brand-700 dark:text-blue-400">82%</span>
                 </div>
-                <div className="h-2 w-full bg-ink-200 rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-ink-200 dark:bg-zinc-700 rounded-full overflow-hidden">
                   <div className="h-full bg-brand-600 rounded-full w-[82%]" />
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-ink-100">
+              <div className="flex items-center justify-between pt-4 border-t border-ink-100 dark:border-zinc-800">
                 <div className="flex -space-x-2">
-                  <div className="w-9 h-9 rounded-full border-2 border-white bg-brand-100 text-brand-700 flex items-center justify-center text-[10px] font-bold shadow-sm">OT</div>
-                  <div className="w-9 h-9 rounded-full border-2 border-white bg-ink-200 text-ink-600 flex items-center justify-center text-[10px] font-bold shadow-sm">AI</div>
+                  <div className="w-9 h-9 rounded-full border-2 border-white dark:border-zinc-900 bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-blue-400 flex items-center justify-center text-[10px] font-bold shadow-sm">OT</div>
+                  <div className="w-9 h-9 rounded-full border-2 border-white dark:border-zinc-900 bg-ink-200 dark:bg-zinc-800 text-ink-600 dark:text-zinc-400 flex items-center justify-center text-[10px] font-bold shadow-sm">AI</div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-1.5 text-ink-400 text-xs font-medium">
-                    <div className="w-3 h-3 rounded-sm border border-brand-500/50 flex items-center justify-center">
-                      <div className="w-1 h-1 bg-brand-500 rounded-full" />
+                  <div className="flex items-center gap-1.5 text-ink-400 dark:text-zinc-500 text-xs font-medium">
+                    <div className="w-3 h-3 rounded-sm border border-brand-500/50 dark:border-blue-500/50 flex items-center justify-center">
+                      <div className="w-1 h-1 bg-brand-500 dark:bg-blue-500 rounded-full" />
                     </div>
                     High
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Overlapping secondary element for depth */}
-          <div className="absolute -bottom-8 -left-8 w-64 p-5 bg-white/60 backdrop-blur-md rounded-2xl border border-ink-200/50 shadow-2xl skew-y-2 -z-10 group-hover:skew-y-0 transition-transform duration-500">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-5 h-5 rounded bg-blue-500 flex items-center justify-center text-[10px] text-white font-bold">C</div>
-              <div className="h-2 w-20 bg-ink-200 rounded-full" />
-            </div>
-            <div className="space-y-2">
-              <div className="h-3 w-full bg-ink-100 rounded-full" />
-              <div className="h-3 w-4/5 bg-ink-100 rounded-full" />
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
+"use client";
+
 import { ShieldCheck } from "lucide-react";
-import type { CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 
 interface TechProps {
   tech: {
@@ -21,6 +23,33 @@ interface TechProps {
 }
 
 const Tech = ({ tech }: TechProps) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Return a static skeleton/structure on the server to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <section className="py-24">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-center text-ink-900 reveal">
+            {tech.title}
+          </h2>
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div className="bg-white/90 p-8 rounded-2xl border border-ink-200/70 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] reveal animate-pulse min-h-[400px]" />
+            <div className="grid gap-6">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="p-4 bg-ink-100 rounded-xl border border-ink-300 min-h-[80px] animate-pulse" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-4">

@@ -104,7 +104,7 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
       </div>
 
       <div>
-        <label htmlFor={nameId} className="block text-sm font-semibold text-ink-700 mb-2">
+        <label htmlFor={nameId} className="block text-sm font-semibold text-zinc-700 dark:text-zinc-200 mb-2">
           {labels.name}
         </label>
         <input
@@ -112,8 +112,7 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
           name="name"
           type="text"
           autoComplete="name"
-          className="w-full px-4 py-3 rounded-xl bg-white border border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition"
-          style={{ color: "#18181b" }}
+          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-600 text-zinc-900 dark:text-zinc-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 outline-none transition"
           value={form.name}
           onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))}
           required
@@ -121,7 +120,7 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
       </div>
 
       <div>
-        <label htmlFor={emailId} className="block text-sm font-semibold text-ink-700 mb-2">
+        <label htmlFor={emailId} className="block text-sm font-semibold text-zinc-700 dark:text-zinc-200 mb-2">
           {labels.email}
         </label>
         <input
@@ -130,8 +129,7 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
           type="email"
           autoComplete="email"
           inputMode="email"
-          className="w-full px-4 py-3 rounded-xl bg-white border border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition"
-          style={{ color: "#18181b" }}
+          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-600 text-zinc-900 dark:text-zinc-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 outline-none transition"
           value={form.email}
           onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
           required
@@ -145,20 +143,19 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
       </div>
 
       <div>
-        <label htmlFor={msgId} className="block text-sm font-semibold text-ink-700 mb-2">
+        <label htmlFor={msgId} className="block text-sm font-semibold text-zinc-700 dark:text-zinc-200 mb-2">
           {labels.message}
         </label>
         <textarea
           id={msgId}
           name="message"
           rows={4}
-          className="w-full px-4 py-3 rounded-xl bg-white border border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none resize-none transition"
-          style={{ color: "#18181b" }}
+          className="w-full px-4 py-3 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-600 text-zinc-900 dark:text-zinc-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 outline-none resize-none transition"
           value={form.message}
           onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
           required
         />
-        <p className="mt-2 text-xs text-ink-500">
+        <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400">
           {lang === "en"
             ? "Tip: include context, target timeline, and whether you use Cloud or Data Center."
             : "Порада: додай контекст, бажані строки та чи це Cloud чи Data Center."}
@@ -168,8 +165,7 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
       <button
         type="submit"
         disabled={!canSubmit}
-        className="w-full bg-zinc-900 font-semibold py-4 rounded-xl hover:bg-zinc-800 transition shadow-[0_16px_40px_-30px_rgba(15,23,42,0.6)] disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
-        style={{ color: "#ffffff" }}
+        className="w-full bg-blue-600 text-white font-semibold py-4 rounded-xl hover:bg-blue-700 transition shadow-[0_16px_40px_-30px_rgba(37,99,235,0.6)] disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
       >
         {status === "submitting" && <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />}
         {labels.submit}

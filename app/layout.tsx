@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -25,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-color-mode="light">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Loads Atlassian Design System CSS variables (tokens) */}
         <link
@@ -34,8 +35,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${manrope.variable} ${jetbrainsMono.variable} antialiased`}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
 }
+

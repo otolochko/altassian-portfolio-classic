@@ -74,7 +74,33 @@
   --color-danger-text: var(--danger-text);
 }
 
-/* Dark mode disabled - site uses light theme with white cards */
+/* Dark mode styles */
+.dark {
+  --background: #09090b; /* zinc-950 */
+  --foreground: #f4f4f5; /* zinc-100 */
+  --muted: #a1a1aa; /* zinc-400 */
+  --border: #3f3f46; /* zinc-700 */
+
+  --surface: #18181b; /* zinc-900 */
+  --surface-sunken: #09090b; /* zinc-950 */
+  --surface-inverse: #fafafa; /* zinc-50 */
+
+  --inverse: #18181b; /* zinc-900 */
+  --inverse-muted: #3f3f46; /* zinc-700 */
+
+  --link: #60a5fa; /* blue-400 */
+  --brand: #3b82f6; /* blue-500 */
+  --brand-hover: #60a5fa; /* blue-400 */
+
+  --info: #1e3a8a; /* blue-900 */
+  --info-text: #93c5fd; /* blue-300 */
+
+  --success: #14532d; /* green-900 */
+  --success-text: #86efac; /* green-300 */
+
+  --danger: #7f1d1d; /* red-900 */
+  --danger-text: #fca5a5; /* red-300 */
+}
 
 body {
   background:
@@ -91,16 +117,26 @@ body {
     sans-serif;
 }
 
-/* Force dark text on form elements */
+.dark body,
+body.dark,
+.dark {
+  background:
+    radial-gradient(1200px circle at 0% -10%, #172554 0%, transparent 55%),
+    radial-gradient(900px circle at 100% 0%, #18181b 0%, transparent 50%),
+    var(--background);
+}
+
+/* Form elements inherit theme colors */
 input,
 textarea,
 select {
-  color: #18181b !important; /* zinc-900 */
+  color: var(--foreground);
+  background-color: var(--surface);
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #a1a1aa !important; /* zinc-400 */
+  color: var(--muted);
 }
 
 html {

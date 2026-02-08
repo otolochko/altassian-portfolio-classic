@@ -30,19 +30,19 @@ const Navbar = ({ nav, lang, nextLang }: NavbarProps) => {
             <a href="#about" className="hover:text-ink-900 dark:hover:text-zinc-100 transition">
               {nav.about}
             </a>
-            <a href="#challenges" className="hover:text-ink-900 transition">
+            <a href="#challenges" className="hover:text-ink-900 dark:hover:text-zinc-100 transition">
               {nav.challenges}
             </a>
-            <a href="#areas" className="hover:text-ink-900 transition">
+            <a href="#areas" className="hover:text-ink-900 dark:hover:text-zinc-100 transition">
               {nav.expertise}
             </a>
-            <a href="#services" className="hover:text-ink-900 transition">
+            <a href="#services" className="hover:text-ink-900 dark:hover:text-zinc-100 transition">
               {nav.services}
             </a>
-            <a href="#projects" className="hover:text-ink-900 transition">
+            <a href="#projects" className="hover:text-ink-900 dark:hover:text-zinc-100 transition">
               {nav.projects}
             </a>
-            <a href="#contact" className="hover:text-ink-900 transition">
+            <a href="#contact" className="hover:text-ink-900 dark:hover:text-zinc-100 transition">
               {nav.contact}
             </a>
           </div>

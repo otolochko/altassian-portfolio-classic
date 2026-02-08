@@ -13,9 +13,9 @@ const About = ({ about }: AboutProps) => {
     <section id="about" className="py-24">
       <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
         <div>
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-ink-900 reveal">{about.title}</h2>
-          <p className="text-ink-600 mb-4 text-lg leading-relaxed reveal">{about.p1}</p>
-          <p className="text-ink-600 leading-relaxed reveal">{about.p2}</p>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-ink-900 dark:text-zinc-100 reveal">{about.title}</h2>
+          <p className="text-ink-600 dark:text-zinc-300 mb-4 text-lg leading-relaxed reveal">{about.p1}</p>
+          <p className="text-ink-600 dark:text-zinc-300 leading-relaxed reveal">{about.p2}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-4">

@@ -77,14 +77,14 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
   return (
     <form onSubmit={onSubmit} className="space-y-6 reveal" noValidate>
       {status === "success" && (
-        <div className="flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-800">
+        <div className="flex items-start gap-3 rounded-xl border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 p-4 text-emerald-800 dark:text-emerald-300">
           <CheckCircle2 className="mt-0.5 h-5 w-5" aria-hidden="true" />
           <div className="text-sm">{labels.success}</div>
         </div>
       )}
 
       {status === "error" && (
-        <div className="flex items-start gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-rose-800">
+        <div className="flex items-start gap-3 rounded-xl border border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/40 p-4 text-rose-800 dark:text-rose-300">
           <AlertCircle className="mt-0.5 h-5 w-5" aria-hidden="true" />
           <div className="text-sm">{labels.error}</div>
         </div>
@@ -136,7 +136,7 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
           aria-invalid={form.email.length > 0 && !emailOk}
         />
         {form.email.length > 0 && !emailOk && (
-          <p className="mt-2 text-xs text-rose-600">
+          <p className="mt-2 text-xs text-rose-600 dark:text-rose-400">
             {lang === "en" ? "Please enter a valid email." : "Вкажіть коректний email."}
           </p>
         )}

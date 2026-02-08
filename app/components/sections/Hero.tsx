@@ -46,8 +46,39 @@ const Hero = ({ hero }: HeroProps) => {
         </div>
 
         <div className="hidden lg:block relative group">
+          {/* Ambient layers for depth behind the mock cards */}
+          <div className="pointer-events-none absolute -top-10 -right-8 h-44 w-44 rounded-full bg-blue-500/20 blur-3xl -z-30 transition-all duration-700 group-hover:scale-110 group-hover:bg-blue-400/25" />
+          <div className="pointer-events-none absolute -bottom-8 -left-6 h-36 w-36 rounded-full bg-cyan-400/15 blur-3xl -z-30 transition-all duration-700 group-hover:scale-110 group-hover:bg-cyan-300/20" />
+          <div className="pointer-events-none absolute -inset-6 rounded-[28px] -z-20 opacity-40 transition-opacity duration-700 group-hover:opacity-60 bg-[linear-gradient(to_right,rgba(63,63,70,0.25)_1px,transparent_1px),linear-gradient(to_bottom,rgba(63,63,70,0.25)_1px,transparent_1px)] bg-[size:26px_26px]" />
+          <div className="pointer-events-none absolute top-0 left-0 -z-10">
+            <div className="absolute -left-20 -top-2 w-40 rounded-xl border border-zinc-700/70 bg-zinc-900/70 p-3 shadow-[0_20px_45px_-30px_rgba(2,6,23,0.9)] transition-all duration-700 rotate-[-16deg] translate-x-3 translate-y-5 group-hover:rotate-[-4deg] group-hover:translate-x-12 group-hover:translate-y-1">
+              <div className="mb-2 h-2 w-24 rounded-full bg-zinc-600/70" />
+              <div className="h-1.5 w-full rounded-full bg-blue-500/35" />
+              <div className="mt-1.5 h-1.5 w-4/5 rounded-full bg-zinc-600/70" />
+            </div>
+            <div className="absolute -right-12 top-4 w-36 rounded-xl border border-zinc-700/70 bg-zinc-900/65 p-3 shadow-[0_20px_45px_-30px_rgba(2,6,23,0.9)] transition-all duration-700 rotate-[18deg] -translate-x-8 translate-y-10 group-hover:rotate-[3deg] group-hover:translate-x-6 group-hover:translate-y-0">
+              <div className="mb-2 flex items-center gap-2">
+                <div className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+                <div className="h-2 w-14 rounded-full bg-zinc-600/70" />
+              </div>
+              <div className="h-1.5 w-full rounded-full bg-zinc-600/60" />
+            </div>
+            <div className="absolute -left-12 top-36 w-32 rounded-xl border border-zinc-700/70 bg-zinc-900/65 p-3 shadow-[0_20px_45px_-30px_rgba(2,6,23,0.9)] transition-all duration-700 rotate-[14deg] translate-x-0 -translate-y-8 group-hover:rotate-[2deg] group-hover:translate-x-16 group-hover:translate-y-0">
+              <div className="mb-2 h-2 w-16 rounded-full bg-zinc-600/70" />
+              <div className="h-1.5 w-full rounded-full bg-cyan-400/35" />
+            </div>
+            <div className="absolute -right-24 top-44 w-44 rounded-xl border border-zinc-700/70 bg-zinc-900/70 p-3 shadow-[0_20px_45px_-30px_rgba(2,6,23,0.9)] transition-all duration-700 rotate-[-22deg] -translate-x-4 -translate-y-3 group-hover:rotate-[-5deg] group-hover:translate-x-4 group-hover:translate-y-2">
+              <div className="mb-2 h-2 w-20 rounded-full bg-zinc-600/70" />
+              <div className="space-y-1.5">
+                <div className="h-1.5 w-full rounded-full bg-zinc-600/70" />
+                <div className="h-1.5 w-4/5 rounded-full bg-blue-500/35" />
+                <div className="h-1.5 w-2/3 rounded-full bg-zinc-600/55" />
+              </div>
+            </div>
+          </div>
+
           {/* Confluence-style Mock (Background) */}
-          <div className="absolute -top-12 -left-12 w-full h-full bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden -z-20 transition-all duration-700 ease-out group-hover:-translate-x-6 group-hover:-translate-y-6 group-hover:shadow-3xl">
+          <div className="absolute -top-14 -left-14 w-full h-full bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden -z-20 transition-all duration-700 ease-out group-hover:-translate-x-7 group-hover:-translate-y-7 group-hover:rotate-[-1deg] group-hover:shadow-3xl">
             <div className="bg-zinc-50 dark:bg-zinc-800/50 border-b border-zinc-200 dark:border-zinc-800 px-4 py-2 flex items-center gap-2">
               <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-600" />
               <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-600" />
@@ -70,6 +101,26 @@ const Hero = ({ hero }: HeroProps) => {
               </div>
             </div>
           </div>
+
+          <div className="absolute -bottom-8 -right-8 h-24 w-48 rounded-2xl border border-blue-900/50 bg-gradient-to-r from-zinc-900/80 to-blue-900/60 shadow-[0_25px_60px_-30px_rgba(2,6,23,0.8)] -z-10 transition-all duration-700 group-hover:translate-x-1 group-hover:translate-y-1 group-hover:rotate-2" />
+          <div className="pointer-events-none absolute top-8 -right-10 w-44 rounded-xl border border-zinc-700/70 bg-zinc-900/70 p-3 shadow-[0_24px_50px_-32px_rgba(2,6,23,0.9)] z-0 transition-all duration-700 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:rotate-2">
+            <div className="mb-2 h-2 w-20 rounded-full bg-zinc-600/70" />
+            <div className="space-y-1.5">
+              <div className="h-1.5 w-full rounded-full bg-blue-500/40" />
+              <div className="h-1.5 w-4/5 rounded-full bg-zinc-600/70" />
+              <div className="h-1.5 w-2/3 rounded-full bg-zinc-600/50" />
+            </div>
+          </div>
+          <div className="pointer-events-none absolute -bottom-2 -left-10 w-40 rounded-xl border border-zinc-700/70 bg-zinc-900/65 p-3 shadow-[0_24px_50px_-32px_rgba(2,6,23,0.9)] z-0 transition-all duration-700 group-hover:translate-y-1 group-hover:-translate-x-1 group-hover:-rotate-2">
+            <div className="mb-2 flex items-center gap-2">
+              <div className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+              <div className="h-2 w-16 rounded-full bg-zinc-600/70" />
+            </div>
+            <div className="h-1.5 w-full rounded-full bg-zinc-600/60" />
+            <div className="mt-1.5 h-1.5 w-3/4 rounded-full bg-blue-500/35" />
+          </div>
+          <div className="pointer-events-none absolute top-20 -right-1 h-px w-20 bg-gradient-to-r from-blue-500/0 via-blue-400/60 to-blue-500/0 z-0 transition-opacity duration-500 group-hover:opacity-80" />
+          <div className="pointer-events-none absolute bottom-20 -left-1 h-px w-20 bg-gradient-to-r from-cyan-500/0 via-cyan-300/60 to-cyan-500/0 z-0 transition-opacity duration-500 group-hover:opacity-80" />
 
           <div className="rounded-3xl border border-ink-200/70 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl p-8 shadow-[0_30px_80px_-60px_rgba(15,23,42,0.6)] reveal relative overflow-hidden z-10 transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:shadow-[0_40px_100px_-60px_rgba(15,23,42,0.7)]">
             {/* Atlassian-style Accent */}

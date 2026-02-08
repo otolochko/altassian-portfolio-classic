@@ -23,7 +23,7 @@ const Challenges = ({ challenges }: ChallengesProps) => {
 
   if (!mounted) {
     return (
-      <section id="challenges" className="py-24 bg-zinc-50/70 dark:bg-zinc-950/40">
+      <section id="challenges" className="py-24 bg-ink-50 dark:bg-zinc-950/40">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-semibold text-ink-900 dark:text-zinc-100 mb-4 reveal">
@@ -45,7 +45,7 @@ const Challenges = ({ challenges }: ChallengesProps) => {
   }
 
   return (
-    <section id="challenges" className="py-24 bg-zinc-50/70 dark:bg-zinc-950/40">
+    <section id="challenges" className="py-24 bg-ink-50 dark:bg-zinc-950/40">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold text-ink-900 dark:text-zinc-100 mb-4 reveal">
@@ -58,7 +58,7 @@ const Challenges = ({ challenges }: ChallengesProps) => {
           {challenges.items.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white/90 dark:bg-zinc-900/90 rounded-2xl p-6 border border-zinc-300 dark:border-zinc-700 group hover:border-brand-300 dark:hover:border-blue-500/50 transition-all shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] hover:shadow-[0_24px_60px_-40px_rgba(8,145,178,0.6)] reveal-item"
+              className="bg-white dark:bg-zinc-900/90 rounded-2xl p-6 border border-ink-200/80 dark:border-zinc-700 group hover:border-brand-300 dark:hover:border-blue-500/50 transition-all shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] hover:shadow-[0_24px_60px_-40px_rgba(8,145,178,0.6)] reveal-item"
               style={{ "--delay": `${idx * 90}ms` } as CSSProperties}
             >
               <div className="mb-4 pb-4 border-b border-ink-200/70 dark:border-zinc-700">

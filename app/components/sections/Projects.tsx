@@ -16,7 +16,7 @@ interface ProjectsProps {
 
 const Projects = ({ projects }: ProjectsProps) => {
   return (
-    <section id="projects" className="py-24 bg-zinc-50/70 dark:bg-zinc-950/40">
+    <section id="projects" className="py-24 bg-ink-50 dark:bg-zinc-950/40">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold text-ink-900 dark:text-zinc-100 mb-4 reveal">
@@ -29,7 +29,7 @@ const Projects = ({ projects }: ProjectsProps) => {
           {projects.items.map((project, idx) => (
             <div
               key={idx}
-              className="bg-white/90 dark:bg-zinc-900/90 rounded-2xl overflow-hidden shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] hover:shadow-[0_24px_60px_-40px_rgba(8,145,178,0.6)] border border-zinc-300 dark:border-zinc-700 transition-all flex flex-col reveal-item"
+              className="bg-white dark:bg-zinc-900/90 rounded-2xl overflow-hidden shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] hover:shadow-[0_24px_60px_-40px_rgba(8,145,178,0.6)] border border-ink-200/80 dark:border-zinc-700 transition-all flex flex-col reveal-item"
               style={{ "--delay": `${idx * 100}ms` } as CSSProperties}
             >
               <div className="p-8 flex-1">

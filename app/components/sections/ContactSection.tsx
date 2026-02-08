@@ -21,7 +21,7 @@ interface ContactSectionProps {
 const ContactSection = ({ contact, lang }: ContactSectionProps) => {
   return (
     <section id="contact" className="py-24 px-4">
-      <div className="max-w-6xl mx-auto bg-white/90 dark:bg-zinc-900/95 rounded-3xl shadow-[0_30px_80px_-60px_rgba(15,23,42,0.6)] overflow-hidden flex flex-col md:flex-row border border-zinc-200/70 dark:border-zinc-700">
+      <div className="max-w-6xl mx-auto bg-white dark:bg-zinc-900/95 rounded-3xl shadow-[0_30px_80px_-60px_rgba(15,23,42,0.6)] overflow-hidden flex flex-col md:flex-row border border-ink-200/80 dark:border-zinc-700">
         <div className="bg-gradient-to-br from-zinc-900 via-zinc-900 to-blue-700 p-10 md:w-2/5 flex flex-col justify-between text-white">
           <div>
             <h3 className="text-2xl font-bold mb-6">{contact.title}</h3>

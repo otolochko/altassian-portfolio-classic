@@ -17,7 +17,7 @@ const Hero = ({ hero }: HeroProps) => {
     <section className="pt-32 pb-24 px-4">
       <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
         <div className="text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/80 dark:bg-zinc-800/80 border border-ink-200/70 dark:border-zinc-700 text-ink-700 dark:text-zinc-200 rounded-full text-sm font-semibold mb-6 shadow-[0_6px_20px_-15px_rgba(15,23,42,0.25)] reveal">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white dark:bg-zinc-800/80 border border-ink-200/80 dark:border-zinc-700 text-ink-700 dark:text-zinc-200 rounded-full text-sm font-semibold mb-6 shadow-[0_6px_20px_-15px_rgba(15,23,42,0.25)] reveal">
           {hero.badge}
           </div>
 
@@ -71,7 +71,7 @@ const Hero = ({ hero }: HeroProps) => {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-ink-200/70 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl p-8 shadow-[0_30px_80px_-60px_rgba(15,23,42,0.6)] reveal relative overflow-hidden z-10 transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:shadow-[0_40px_100px_-60px_rgba(15,23,42,0.7)]">
+          <div className="rounded-3xl border border-ink-200/70 dark:border-zinc-700 bg-white dark:bg-zinc-900/90 backdrop-blur-xl p-8 shadow-[0_30px_80px_-60px_rgba(15,23,42,0.6)] reveal relative overflow-hidden z-10 transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:shadow-[0_40px_100px_-60px_rgba(15,23,42,0.7)]">
             {/* Atlassian-style Accent */}
             <div className="absolute top-0 left-0 w-full h-1 bg-brand-600 group-hover:h-1.5 transition-all duration-300" />
             

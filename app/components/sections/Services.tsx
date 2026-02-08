@@ -28,7 +28,7 @@ const Services = ({ services }: ServicesProps) => {
           {services.items.map((service, idx) => (
             <div
               key={idx}
-              className="bg-white/90 dark:bg-zinc-900/90 p-8 rounded-2xl border border-zinc-300 dark:border-zinc-700 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] hover:shadow-[0_24px_60px_-40px_rgba(8,145,178,0.6)] transition-all duration-300 reveal-item"
+              className="bg-white dark:bg-zinc-900/90 p-8 rounded-2xl border border-ink-200/80 dark:border-zinc-700 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] hover:shadow-[0_24px_60px_-40px_rgba(8,145,178,0.6)] transition-all duration-300 reveal-item"
               style={{ "--delay": `${idx * 100}ms` } as CSSProperties}
             >
               <h3 className="text-2xl font-semibold text-ink-900 dark:text-zinc-100 mb-3">{service.title}</h3>

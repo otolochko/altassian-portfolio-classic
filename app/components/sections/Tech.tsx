@@ -38,7 +38,7 @@ const Tech = ({ tech }: TechProps) => {
             {tech.title}
           </h2>
           <div className="grid lg:grid-cols-2 gap-12">
-            <div className="bg-white/90 dark:bg-zinc-900/90 p-8 rounded-2xl border border-ink-200/70 dark:border-zinc-700 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] reveal animate-pulse min-h-[400px]" />
+            <div className="bg-white dark:bg-zinc-900/90 p-8 rounded-2xl border border-ink-200/70 dark:border-zinc-700 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] reveal animate-pulse min-h-[400px]" />
             <div className="grid gap-6">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="p-4 bg-ink-100 dark:bg-zinc-800 rounded-xl border border-ink-300 dark:border-zinc-700 min-h-[80px] animate-pulse" />
@@ -57,7 +57,7 @@ const Tech = ({ tech }: TechProps) => {
           {tech.title}
         </h2>
         <div className="grid lg:grid-cols-2 gap-12">
-          <div className="bg-white/90 dark:bg-zinc-900/90 p-8 rounded-2xl border border-ink-200/70 dark:border-zinc-700 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] reveal">
+          <div className="bg-white dark:bg-zinc-900/90 p-8 rounded-2xl border border-ink-200/70 dark:border-zinc-700 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.5)] reveal">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-ink-900 dark:text-zinc-100">
               <ShieldCheck className="text-brand-600" aria-hidden="true" /> {tech.certsTitle}
             </h3>
@@ -110,7 +110,7 @@ const Tech = ({ tech }: TechProps) => {
                 <h4 className="text-brand-700 dark:text-blue-400 font-semibold mb-2 uppercase text-xs tracking-[0.2em]">
                   {item.category}
                 </h4>
-                <div className="p-4 bg-white dark:bg-zinc-900 rounded-xl border border-ink-300 dark:border-zinc-700 text-ink-600 dark:text-zinc-300 font-mono text-sm shadow-sm">
+                <div className="p-4 bg-white dark:bg-zinc-900 rounded-xl border border-ink-200/70 dark:border-zinc-700 text-ink-600 dark:text-zinc-300 font-mono text-sm shadow-sm">
                   {item.items}
                 </div>
               </div>

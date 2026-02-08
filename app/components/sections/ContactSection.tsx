@@ -33,7 +33,7 @@ const ContactSection = ({ contact, lang }: ContactSectionProps) => {
                   <CircleUser className="w-6 h-6" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase font-bold tracking-[0.2em] text-white/60">Community</p>
+                  <p className="text-xs uppercase font-bold tracking-[0.2em] text-white/80">Community</p>
                   <a
                     className="font-medium transition hover:opacity-80"
                     href="https://community.atlassian.com/user/profile/af784eda-dcd2-4fba-8282-d1cd8548b328"
@@ -49,7 +49,7 @@ const ContactSection = ({ contact, lang }: ContactSectionProps) => {
                   <Linkedin className="w-6 h-6" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase font-bold tracking-[0.2em] text-white/60">Social</p>
+                  <p className="text-xs uppercase font-bold tracking-[0.2em] text-white/80">Social</p>
                   <a
                     className="font-medium transition hover:opacity-80"
                     href="https://www.linkedin.com/in/oleksandrtolochko/"

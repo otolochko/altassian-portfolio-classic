@@ -81,7 +81,7 @@ const Hero = ({ hero }: HeroProps) => {
                   <span className="font-bold text-lg">J</span>
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-ink-400 dark:text-zinc-500 uppercase tracking-widest leading-none mb-1">Jira Service Management</div>
+                  <div className="text-[10px] font-bold text-ink-600 dark:text-zinc-500 uppercase tracking-widest leading-none mb-1">Jira Service Management</div>
                   <div className="text-sm font-bold text-ink-900 dark:text-zinc-100">PROJ-742</div>
                 </div>
               </div>
@@ -104,7 +104,7 @@ const Hero = ({ hero }: HeroProps) => {
               </h3>
 
               <div className="p-4 bg-ink-50 dark:bg-zinc-800/50 rounded-2xl border border-ink-200/50 dark:border-zinc-700 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-bold text-ink-400 dark:text-zinc-500 uppercase tracking-wider">
+                <div className="flex items-center justify-between text-[11px] font-bold text-ink-600 dark:text-zinc-500 uppercase tracking-wider">
                   <span>Progress</span>
                   <span className="text-brand-700 dark:text-blue-400">82%</span>
                 </div>
@@ -119,7 +119,7 @@ const Hero = ({ hero }: HeroProps) => {
                   <div className="w-9 h-9 rounded-full border-2 border-white dark:border-zinc-900 bg-ink-200 dark:bg-zinc-800 text-ink-600 dark:text-zinc-400 flex items-center justify-center text-[10px] font-bold shadow-sm transition-transform duration-300 group-hover:scale-105">AI</div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-1.5 text-ink-400 dark:text-zinc-500 text-xs font-medium">
+                  <div className="flex items-center gap-1.5 text-ink-600 dark:text-zinc-500 text-xs font-medium">
                     <div className="w-3 h-3 rounded-sm border border-brand-500/50 dark:border-blue-500/50 flex items-center justify-center">
                       <div className="w-1 h-1 bg-brand-500 dark:bg-blue-500 rounded-full" />
                     </div>

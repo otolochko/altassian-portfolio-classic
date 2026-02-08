@@ -155,7 +155,7 @@ export default function ContactFormClient({ lang, labels }: { lang: Lang; labels
           onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
           required
         />
-        <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400">
+        <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
           {lang === "en"
             ? "Tip: include context, target timeline, and whether you use Cloud or Data Center."
             : "Порада: додай контекст, бажані строки та чи це Cloud чи Data Center."}

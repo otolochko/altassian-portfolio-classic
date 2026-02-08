@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Globe } from "lucide-react";
-import { ThemeToggle } from "../ui/ThemeToggle";
 type Lang = "en" | "uk";
 
 interface NavbarProps {
@@ -55,8 +54,6 @@ const Navbar = ({ nav, lang, nextLang }: NavbarProps) => {
             >
               <Globe size={18} aria-hidden="true" /> <span className="uppercase">{lang}</span>
             </Link>
-
-            <ThemeToggle />
 
             <a
               href="#contact"

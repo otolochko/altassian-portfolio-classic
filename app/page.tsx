@@ -5,7 +5,7 @@ import About from "./components/sections/About";
 import Tech from "./components/sections/Tech";
 import Challenges from "./components/sections/Challenges";
 import Areas from "./components/sections/Areas";
-import Services from "./components/sections/Services";
+import ServicesClient from "./components/sections/ServicesClient";
 import Projects from "./components/sections/Projects";
 import ContactSection from "./components/sections/ContactSection";
 import Footer from "./components/sections/Footer";
@@ -32,7 +32,7 @@ export default async function Page({
         <Tech tech={t.tech} />
         <Challenges challenges={t.challenges} />
         <Areas areas={t.areas} />
-        <Services services={t.services} />
+        <ServicesClient services={t.services} />
         <Projects projects={t.projects} />
         <ContactSection contact={t.contact} lang={lang} />
       </main>

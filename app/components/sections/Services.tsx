@@ -1,7 +1,7 @@
 import { CheckCircle } from "lucide-react";
 import type { CSSProperties } from "react";
 
-interface ServicesProps {
+export interface ServicesProps {
   services: {
     title: string;
     desc: string;

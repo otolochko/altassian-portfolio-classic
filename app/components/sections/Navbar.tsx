@@ -1,72 +1,109 @@
+"use client";
+
 import Link from "next/link";
-import { Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import type { Locale, PortfolioContent } from "../../content";
 import { ThemeToggle } from "../ui/ThemeToggle";
 
-type Lang = "en" | "uk";
-
-interface NavbarProps {
-  nav: {
-    about: string;
-    challenges: string;
-    expertise: string;
-    services: string;
-    projects: string;
-    contact: string;
-    cta: string;
-  };
-  lang: Lang;
-  nextLang: Lang;
-}
-
-const Navbar = ({ nav, lang, nextLang }: NavbarProps) => {
-  return (
-    <nav className="fixed top-0 w-full glass z-50 shadow-glass">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="text-xl md:text-2xl font-bold text-text tracking-tight">
-            Oleksandr<span className="text-accent">.Tolochko</span>
-          </div>
-
-          <div className="hidden lg:flex items-center space-x-6 text-sm font-semibold">
-            {[
-              { href: "#about", label: nav.about },
-              { href: "#challenges", label: nav.challenges },
-              { href: "#areas", label: nav.expertise },
-              { href: "#services", label: nav.services },
-              { href: "#projects", label: nav.projects },
-              { href: "#contact", label: nav.contact },
-            ].map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                className="relative text-muted hover:text-accent transition-colors group"
-              >
-                {label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent rounded-full transition-[width] duration-200 ease-out group-hover:w-full" />
-              </a>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <Link
-              href={{ pathname: "/", query: { lang: nextLang } }}
-              className="flex items-center gap-1 text-muted hover:text-accent font-semibold transition px-2 py-1 rounded-lg hover:bg-surface-raised"
-              aria-label="Switch language"
-            >
-              <Globe size={18} aria-hidden="true" /> <span className="uppercase text-sm">{lang}</span>
-            </Link>
-            <a
-              href="#contact"
-              className="hidden sm:block bg-gradient-to-r from-accent to-accent-hover text-white px-4 py-2 rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-accent/30 transition-[transform,box-shadow] duration-150 ease-out hover:scale-[1.02] active:scale-[0.97]"
-            >
-              {nav.cta}
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
+type NavbarProps = {
+  locale: Locale;
+  nav: PortfolioContent["nav"];
 };
 
-export default Navbar;
+export default function Navbar({ locale, nav }: NavbarProps) {
+  const [open, setOpen] = useState(false);
+  const nextLocale: Locale = locale === "en" ? "uk" : "en";
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [open]);
+
+  const links = [
+    { href: "#work", label: nav.work },
+    { href: "#expertise", label: nav.expertise },
+    { href: "#credentials", label: nav.credentials },
+    { href: "#about", label: nav.about },
+    { href: "#contact", label: nav.contact },
+  ];
+
+  return (
+    <header className="site-header">
+      <div className="shell nav-inner">
+        <Link href={`/${locale}`} className="brand" aria-label="Oleksandr Tolochko">
+          <span className="brand-mark" aria-hidden="true">
+            OT
+          </span>
+          <span className="brand-name">
+            Oleksandr
+            <span> Tolochko</span>
+          </span>
+        </Link>
+
+        <nav className="desktop-nav" aria-label={nav.primaryNavigation}>
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="nav-link">
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="nav-actions">
+          <ThemeToggle label={nav.switchTheme} />
+          <Link
+            href={`/${nextLocale}`}
+            className="language-link"
+            aria-label={nav.switchLanguage}
+            hrefLang={nextLocale}
+          >
+            {nextLocale.toUpperCase()}
+          </Link>
+          <a className="button button-small nav-cta" href="#contact">
+            {nav.cta}
+          </a>
+          <button
+            type="button"
+            className="icon-button mobile-menu-trigger"
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            aria-label={open ? nav.menuClose : nav.menuOpen}
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </button>
+        </div>
+      </div>
+
+      <nav
+        id="mobile-navigation"
+        className="mobile-nav"
+        data-open={open}
+        aria-label={nav.mobileNavigation}
+      >
+        <div className="shell mobile-nav-inner">
+          {links.map((link, index) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="mobile-nav-link"
+              onClick={() => setOpen(false)}
+            >
+              <span aria-hidden="true">0{index + 1}</span>
+              {link.label}
+            </a>
+          ))}
+          <a className="button mobile-nav-cta" href="#contact" onClick={() => setOpen(false)}>
+            {nav.cta}
+          </a>
+        </div>
+      </nav>
+    </header>
+  );
+}

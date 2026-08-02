@@ -1,163 +1,189 @@
 "use client";
 
-import React, { useId, useMemo, useState } from "react";
-import { AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
+import { AlertCircle, CheckCircle2, LoaderCircle } from "lucide-react";
+import { useRef, useState } from "react";
+import type { Locale, PortfolioContent } from "../content";
 
-type Lang = "en" | "uk";
+type Status = "idle" | "submitting" | "success" | "error" | "validation";
 
-type Labels = {
+type FormState = {
   name: string;
   email: string;
   message: string;
-  submit: string;
-  success: string;
-  error: string;
+  website: string;
 };
 
-type Status = "idle" | "submitting" | "success" | "error";
+const EMPTY_FORM: FormState = {
+  name: "",
+  email: "",
+  message: "",
+  website: "",
+};
 
-export default function ContactFormClient({ lang, labels }: { lang: Lang; labels: Labels }) {
-  const nameId = useId();
-  const emailId = useId();
-  const msgId = useId();
-  const honeyId = useId();
-
+export default function ContactFormClient({
+  locale,
+  labels,
+}: {
+  locale: Locale;
+  labels: PortfolioContent["contact"]["form"];
+}) {
+  const startedAt = useRef(Date.now());
+  const submissionId = useRef<string | null>(null);
   const [status, setStatus] = useState<Status>("idle");
-  const [form, setForm] = useState({ name: "", email: "", message: "", company: "" });
+  const [form, setForm] = useState<FormState>(EMPTY_FORM);
 
-  const emailOk = useMemo(() => {
-    const v = form.email.trim();
-    if (!v) return false;
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-  }, [form.email]);
-
-  const canSubmit =
-    status !== "submitting" &&
+  const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
+  const formIsValid =
     form.name.trim().length >= 2 &&
-    emailOk &&
-    form.message.trim().length >= 10;
+    emailIsValid &&
+    form.message.trim().length >= 10 &&
+    form.message.trim().length <= 3000;
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (form.company.trim()) return;
-    if (!canSubmit) {
-      setStatus("error");
+  function updateField(field: keyof FormState, value: string) {
+    setStatus("idle");
+    setForm((current) => ({ ...current, [field]: value }));
+  }
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!formIsValid) {
+      setStatus("validation");
       return;
     }
+
     setStatus("submitting");
+    submissionId.current ??= crypto.randomUUID();
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email, message: form.message }),
+        body: JSON.stringify({
+          ...form,
+          locale,
+          submissionId: submissionId.current,
+          startedAt: startedAt.current,
+        }),
       });
-      if (response.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", message: "", company: "" });
-      } else {
+
+      if (!response.ok) {
         setStatus("error");
+        return;
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
+
+      setStatus("success");
+      setForm(EMPTY_FORM);
+      submissionId.current = null;
+      startedAt.current = Date.now();
+    } catch {
       setStatus("error");
     }
   }
 
+  const showEmailError = form.email.length > 0 && !emailIsValid;
+
   return (
-    <form onSubmit={onSubmit} className="space-y-5" noValidate>
-      {status === "success" && (
-        <div className="flex items-start gap-3 rounded-lg border border-success/30 bg-success/10 p-4 text-success">
-          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
-          <div className="text-sm">{labels.success}</div>
-        </div>
-      )}
-      {status === "error" && (
-        <div className="flex items-start gap-3 rounded-lg border border-danger/30 bg-danger/10 p-4 text-danger">
-          <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
-          <div className="text-sm">{labels.error}</div>
-        </div>
-      )}
-
-      {/* honeypot */}
-      <div className="hidden">
-        <label htmlFor={honeyId}>Company</label>
+    <form className="contact-form" onSubmit={handleSubmit} noValidate>
+      <div className="form-trap" aria-hidden="true">
+        <label htmlFor="website">Website</label>
         <input
-          id={honeyId}
-          name="company"
-          value={form.company}
-          onChange={(e) => setForm((p) => ({ ...p, company: e.target.value }))}
-          tabIndex={-1}
-          autoComplete="off"
-        />
-      </div>
-
-      <div>
-        <label htmlFor={nameId} className="block text-[11px] font-semibold uppercase tracking-wider text-muted mb-2">
-          {labels.name}
-        </label>
-        <input
-          id={nameId}
-          name="name"
+          id="website"
+          name="website"
           type="text"
-          autoComplete="name"
-          className="w-full px-3 py-2.5 rounded-lg bg-field-bg border border-border text-text placeholder:text-muted focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-[border-color,box-shadow] duration-150 ease-out text-sm shadow-inner-sm"
-          value={form.name}
-          onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))}
-          required
+          value={form.website}
+          onChange={(event) => updateField("website", event.target.value)}
+          autoComplete="off"
+          tabIndex={-1}
         />
       </div>
 
-      <div>
-        <label htmlFor={emailId} className="block text-[11px] font-semibold uppercase tracking-wider text-muted mb-2">
-          {labels.email}
-        </label>
-        <input
-          id={emailId}
-          name="email"
-          type="email"
-          autoComplete="email"
-          inputMode="email"
-          className="w-full px-3 py-2.5 rounded-lg bg-field-bg border border-border text-text placeholder:text-muted focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-[border-color,box-shadow] duration-150 ease-out text-sm shadow-inner-sm"
-          value={form.email}
-          onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
-          required
-          aria-invalid={form.email.length > 0 && !emailOk}
-        />
-        {form.email.length > 0 && !emailOk && (
-          <p className="mt-2 text-xs text-danger">
-            {lang === "en" ? "Please enter a valid email." : "Вкажіть коректний email."}
-          </p>
-        )}
+      <div className="form-grid">
+        <div className="field-group">
+          <label htmlFor="name">{labels.name}</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            value={form.name}
+            onChange={(event) => updateField("name", event.target.value)}
+            placeholder={labels.namePlaceholder}
+            autoComplete="name"
+            minLength={2}
+            maxLength={80}
+            required
+          />
+        </div>
+
+        <div className="field-group">
+          <label htmlFor="email">{labels.email}</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            value={form.email}
+            onChange={(event) => updateField("email", event.target.value)}
+            placeholder={labels.emailPlaceholder}
+            autoComplete="email"
+            inputMode="email"
+            aria-invalid={showEmailError}
+            aria-describedby={showEmailError ? "email-error" : undefined}
+            maxLength={254}
+            required
+          />
+          {showEmailError && (
+            <span id="email-error" className="field-error">
+              {labels.emailValidation}
+            </span>
+          )}
+        </div>
       </div>
 
-      <div>
-        <label htmlFor={msgId} className="block text-[11px] font-semibold uppercase tracking-wider text-muted mb-2">
-          {labels.message}
-        </label>
+      <div className="field-group">
+        <div className="field-label-row">
+          <label htmlFor="message">{labels.message}</label>
+          <span>{labels.messageHint}</span>
+        </div>
         <textarea
-          id={msgId}
+          id="message"
           name="message"
-          rows={4}
-          className="w-full px-3 py-2.5 rounded-lg bg-field-bg border border-border text-text placeholder:text-muted focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none resize-none transition-[border-color,box-shadow] duration-150 ease-out text-sm shadow-inner-sm"
           value={form.message}
-          onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
+          onChange={(event) => updateField("message", event.target.value)}
+          placeholder={labels.messagePlaceholder}
+          rows={6}
+          minLength={10}
+          maxLength={3000}
           required
         />
-        <p className="mt-2 text-xs text-muted">
-          {lang === "en"
-            ? "Tip: include context, target timeline, and whether you use Cloud or Data Center."
-            : "Порада: додай контекст, бажані строки та чи це Cloud чи Data Center."}
-        </p>
       </div>
 
-      <button
-        type="submit"
-        disabled={!canSubmit}
-        className="w-full bg-gradient-to-r from-accent to-accent-hover text-white font-semibold py-2.5 rounded-lg hover:shadow-lg hover:shadow-accent/30 transition-[transform,box-shadow] duration-150 ease-out disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.97] disabled:active:scale-100 text-sm"
-      >
-        {status === "submitting" && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
-        {labels.submit}
-      </button>
+      <div className="form-footer">
+        <div className="form-status" aria-live="polite">
+          {status === "success" && (
+            <span className="status-message status-success">
+              <CheckCircle2 aria-hidden="true" />
+              {labels.success}
+            </span>
+          )}
+          {status === "error" && (
+            <span className="status-message status-error">
+              <AlertCircle aria-hidden="true" />
+              {labels.error}
+            </span>
+          )}
+          {status === "validation" && (
+            <span className="status-message status-error">
+              <AlertCircle aria-hidden="true" />
+              {labels.validation}
+            </span>
+          )}
+        </div>
+
+        <button className="button form-submit" type="submit" disabled={status === "submitting"}>
+          {status === "submitting" && <LoaderCircle className="spinner" aria-hidden="true" />}
+          {status === "submitting" ? labels.submitting : labels.submit}
+        </button>
+      </div>
     </form>
   );
 }
